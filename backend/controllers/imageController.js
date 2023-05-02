@@ -1,7 +1,7 @@
 const AppError = require("../utils/appError");
 const println = require("../utils/println");
 const ImageModel = require("../models/imageModel");
-
+const dummy_data = require("../config/data");
 
 // Return docker images
 const getImages = async (req, res, next) => {
@@ -9,15 +9,9 @@ const getImages = async (req, res, next) => {
   {
     const retrievedImages = await ImageModel.find();
     if (retrievedImages.length === 0)
-    {
-      return res.status(200).json({
-        status: "success",
-        message: `No document found.`,
-      });
-    }
     return res.status(200).json({
       status: "success",
-      data: retrievedImages,
+      data: [ ...retrievedImages, ...dummy_data],
     });
   } catch (error)
   {

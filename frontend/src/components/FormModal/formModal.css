@@ -63,12 +63,10 @@
   Modal Footer
 */
 .modal-footer {
-  padding-top: 20px;
-  margin-top: 20px;
+  margin-top: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--my-light-blue);
 }
 
 

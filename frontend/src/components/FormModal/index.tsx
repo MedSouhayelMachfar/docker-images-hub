@@ -15,7 +15,7 @@ type ModalType = {
 
 const index: React.FC<ModalType> = (props) => {
   const { onClose, onCreate } = props;
-  const handleSubmit = (event: React.SyntheticEvent) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const target = event.target as typeof event.target & {
       name: { value: string };

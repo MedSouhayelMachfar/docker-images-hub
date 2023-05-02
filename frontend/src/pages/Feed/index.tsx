@@ -1,46 +1,44 @@
 import "./feed.css";
 import Navbar from "../../components/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormModal from "../../components/FormModal";
 import Item from "../../components/Item";
+import { ImageType } from "../../types/ImageType";
+import { createImage, fetchImages } from "../../services/images.service";
 
-const initialState = [
-  {
-    name: "alpine",
-    url: "https://hub.docker.com/_/alpine",
-    description: "A minimal Docker image based on Alpine Linux with a complete package index and only 5 MB in size!",
-  },
-  {
-    name: "nginx",
-    url: "https://hub.docker.com/_/nginx",
-    description: "Official build of Nginx.",
-  },
-  {
-    name: "busybox",
-    url: "https://hub.docker.com/_/busybox",
-    description: "Busybox base image.",
-  },
-  {
-    name: "ubuntu",
-    url: "https://hub.docker.com/_/ubuntu",
-    description: "Ubuntu is a Debian-based Linux operating system based on free software.",
-  },
-]
+
 const index: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [images, setImages] = useState(initialState);
+  const [images, setImages] = useState<ImageType[]>([]);
+
+  useEffect(() => {
+    fetchImages().then(data => {
+      if (data)
+        setImages(data);
+    })
+  }, [])
   const handleModalClose = () => { setIsModalOpen((prevState) => !prevState); }
-  const handleCreate = (formData: any) => { console.log(formData); }
+  const handleCreate = async (data: ImageType) => {
+    const { name, description, url } = data;
+    if (name && description && url) {
+      setImages([data, ...images]);
+      setIsModalOpen(false);
+      createImage(data);
+    }
+  }
   return (
     <>
       {isModalOpen && <FormModal onClose={handleModalClose} onCreate={handleCreate} />}
       <section className="feed">
         <Navbar handleModalClose={handleModalClose} />
-        <section className="list-images">
+        {images.length > 0 && <section className="list-images">
           {
-            images.map(item => <Item {...item}/>)
+            images.map((item, index) => <Item {...item} key={index} />)
           }
-        </section>
+        </section>}
+        {images.length === 0 && <section className="list-images">
+          <h1 className="empty">no data</h1>
+        </section>}
       </section>
     </>
   );

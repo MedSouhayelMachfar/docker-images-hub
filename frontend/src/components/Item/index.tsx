@@ -15,7 +15,7 @@ const index: React.FC<propType> = (props) => {
     <article className="item">
       <h1>{name}</h1>
       <p>{description}</p>
-      <p>{url}</p>
+      <a href={url} target="_blank" ><p>{url}</p></a>
     </article>
   );
 };
