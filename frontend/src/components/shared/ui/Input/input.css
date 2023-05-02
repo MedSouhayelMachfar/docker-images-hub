@@ -1,0 +1,36 @@
+/* input group */
+.input-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.input-group input {
+  padding: 10px;
+  border: 1px solid var(--my-blue);
+  color: var(--my-dark);
+  font-size: 16px;
+  letter-spacing: 1px;
+  box-shadow: 0px 3px 3px 0.3px rgba(0, 0, 0, 0.2);
+}
+
+.input-group input:focus {
+  outline: 1px solid var(--my-blue);
+}
+
+.input-group label {
+  margin: 3px 0;
+  position: relative;
+  top: 35px;
+  left: 10px;
+  color: var(--my-blue);
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.input-group label.move {
+  top: 0;
+  left: 0px;
+  color: var(--my-blue);
+}

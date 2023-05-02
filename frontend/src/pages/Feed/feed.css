@@ -1,0 +1,13 @@
+section.feed {
+  height: 100vh;
+  background-color: var(--my-white);
+}
+
+.list-images {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 0 8px;
+  gap: 10px;
+}

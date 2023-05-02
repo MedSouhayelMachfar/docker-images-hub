@@ -1,0 +1,14 @@
+.navbar {
+  min-height: 64px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--my-blue);
+  padding: 20px 8px;
+}
+
+.navbar img {
+  width: 100px;
+}
+

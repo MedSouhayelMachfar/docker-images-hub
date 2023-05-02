@@ -1,0 +1,13 @@
+#error-page{
+    background-color: var(--my-dark);
+    color: var(--my-white);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#error-page i {
+    color: var(--my-purple);
+}
