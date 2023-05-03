@@ -6,7 +6,7 @@ const println = require("./utils/println");
 const middlewaresBeforeRoutes = require('./middlewares/middlewaresBeforeRoutes.js');
 const middlewaresAfterRoutes = require('./middlewares/middlewaresAfterRoutes.js');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.APP_PORT || 3000;
 
 // Middleware before routes
 middlewaresBeforeRoutes(app);
