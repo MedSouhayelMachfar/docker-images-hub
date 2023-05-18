@@ -8,7 +8,6 @@ const getImages = async (req, res, next) => {
   try
   {
     const retrievedImages = await ImageModel.find();
-    if (retrievedImages.length === 0)
     return res.status(200).json({
       status: "success",
       data: [ ...retrievedImages, ...dummy_data],
